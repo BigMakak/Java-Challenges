@@ -115,20 +115,49 @@ public class MiniInterpreter {
                             break;
                         case "]" :
                             if(currBit.equals("1")) {
-                                int indexOf = Arrays.asList(codeArray).indexOf("[");
-                                System.out.println("The index for [ is : " + indexOf);
-                                i = indexOf;
+                                int arrayAmount = 0;
+                                System.out.println("The command ] and I index : " + i );
+                                for (int j = i - 1; j  >= 0 ; j--) {
+
+                                    System.out.println("The command ] and J index : " + j + " and arrayAmount is : " + arrayAmount );
+                                    System.out.println("Current command is : " + codeArray[j]);
+                                    if(codeArray[j].equals("[") && arrayAmount == 0) {
+                                        i = j;
+                                        break;
+                                    } else if(codeArray[j].equals("]")) {
+                                        arrayAmount++;
+                                    } else if(codeArray[j].equals("[") && arrayAmount > 0) {
+                                        arrayAmount--;
+                                    } else {
+                                        continue;
+                                    }
+                                }
                                 break;
                             }
                             break;
                         case "[" :
                             if (currBit.equals("0")) {
-                                int indexOf = Arrays.asList(codeArray).lastIndexOf("]");
-                                System.out.println("The index of ] : " + indexOf);
-                                i = indexOf;
-                            } else {
-                                continue;
+                                System.out.println("The command [");
+                                System.out.println("Current I index : " + i);
+                                int arrayAmount = 0;
+                                for (int j = i + 1; j < codeArray.length ; j++) {
+                                    System.out.println("The current j is : " + j);
+                                    System.out.println("Array Amount : " + arrayAmount);
+                                        if(codeArray[j].equals("]") && arrayAmount == 0) {
+                                            System.out.println("The i value : " + i + " and the j value : " + j);
+                                            i = j;
+                                            break;
+                                        } else if(codeArray[j].equals("[")) {
+                                            arrayAmount++;
+                                        } else if(codeArray[j].equals("]") && arrayAmount > 0) {
+                                            arrayAmount--;
+                                        } else {
+                                            continue;
+                                        }
+                                }
+                                break;
                             }
+                            break;
 
                     }
                 }

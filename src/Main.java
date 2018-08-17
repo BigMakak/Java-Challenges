@@ -22,7 +22,7 @@ public class Main {
          * System.out.println("The camel case word " + KataChallenge.camelCase(""));
          */
 
-        MiniInterpreter miniInterpreter = new MiniInterpreter("000","[[]*>*>*>]");
+        MiniInterpreter miniInterpreter = new MiniInterpreter("10110","[>[*>*>*>]>]");
 
         String result = miniInterpreter.interpertArray();
 
